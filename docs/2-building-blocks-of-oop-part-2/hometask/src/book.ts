@@ -7,7 +7,7 @@ export class Book extends Item {
     private _title: string;
     private _author: string;
 
-    constructor(pages: Pages, title: string, author: string) {
+    constructor(title: string, author: string, pages: Pages) {
         super();
         this.pages = pages;
         this._title = title;

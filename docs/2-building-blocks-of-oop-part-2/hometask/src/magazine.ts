@@ -3,10 +3,10 @@ import {Pages} from "./pages";
 
 export class Magazine extends Item {
 
-    private readonly pages: Pages;
+    protected readonly pages: Pages;
     private _title: string;
 
-    constructor(pages: Pages, title: string) {
+    constructor(title: string, pages: Pages) {
         super();
         this._title = title;
         this.pages = pages;
