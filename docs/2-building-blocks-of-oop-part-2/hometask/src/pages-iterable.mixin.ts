@@ -10,7 +10,7 @@ export function PagesIterableMixin<T extends Constructor>(superclass: T) {
             const itemPages = this.pages.getItemPages(this);
 
             for (let i = 0; i < this.pages.getPagesAmount(); i++) {
-                yield itemPages[i];
+                yield itemPages[i].toString();
             }
         }
     };
