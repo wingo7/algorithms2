@@ -5,9 +5,10 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 
 import styles from './Sort.module.scss'
+import {Row} from "../Table";
 
 interface SortProps {
-  store?: {};
+  store: Row[];
   updateStore?: (val) => void;
 }
 
@@ -20,25 +21,26 @@ interface SortProps {
 
 // OR store can be global
 
-export function Sort(props: SortProps) {
-  const handleChange = (value) => {
-    console.log(value); // for debugging
-  };
+export function Sort({ store, updateStore }: SortProps) {
+    const handleChange = (value) => {
+        updateStore([...store.sort((a, b) =>
+            value === 'desc' ? b.posts - a.posts : a.posts - b.posts)])
+    };
 
-  return (
-    <FormControl className={styles.control} component="fieldset">
-      <FormLabel className={styles.label}>
-        Sort by payments
-      </FormLabel>
-      <RadioGroup
-        className={styles.group}
-        aria-label="sorting"
-        name="radio-buttons-group"
-        onChange={(e) => handleChange(e.target.value)}
-      >
-        <FormControlLabel value="desc" control={<Radio />} label="desc" />
-        <FormControlLabel value="asc" control={<Radio />} label="asc" />
-      </RadioGroup>
-    </FormControl>
-  );
+    return (
+        <FormControl className={styles.control} component="fieldset">
+            <FormLabel className={styles.label}>
+                Sort by payments
+            </FormLabel>
+            <RadioGroup
+                className={styles.group}
+                aria-label="sorting"
+                name="radio-buttons-group"
+                onChange={(e) => handleChange(e.target.value)}
+            >
+                <FormControlLabel value="desc" control={<Radio />} label="desc" />
+                <FormControlLabel value="asc" control={<Radio />} label="asc" />
+            </RadioGroup>
+        </FormControl>
+    );
 }

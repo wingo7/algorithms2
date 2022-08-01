@@ -10,35 +10,27 @@ interface SearchProps {
   updateStore?: (val) => void;
 }
 
-// OR
+export function Search({ updateStore }: SearchProps) {
+    const [searchedValue, setSearchedValue] = useState<string>('');
 
-//interface SearchProps {
-//  selected?: {};
-//  updateSelected?: (val) => void;
-//}
+    const onChange = (value) => {
+        setSearchedValue(value);
+        updateStore(value ? ({country, name, username }) => [country, name, username]
+            .some((str) => str.toLowerCase().includes(value.toLowerCase())) : '')
+    }
 
-// OR store can be global
-
-export function Search(props: SearchProps) {
-  const [searchedValue, setSearchedValue] = useState<string>('');
-
-  const onChange = (value) => {
-    console.log(value); // for debugging
-    setSearchedValue(value);
-  }
-
-  return (
-    <OutlinedInput
-      className={styles.input}
-      placeholder="Search by country/name/username"
-      value={searchedValue}
-      type="search"
-      onChange={(e) => onChange(e.target.value)}
-      startAdornment={
-        <InputAdornment position="start">
-          <SearchIcon />
-        </InputAdornment>
-      }
-    />
-  );
+    return (
+        <OutlinedInput
+            className={styles.input}
+            placeholder="Search by country/name/username"
+            value={searchedValue}
+            type="search"
+            onChange={(e) => onChange(e.target.value)}
+            startAdornment={
+                <InputAdornment position="start">
+                    <SearchIcon />
+                </InputAdornment>
+            }
+        />
+    );
 }
