@@ -5,9 +5,9 @@ export class Edge {
     to = ''
 
     constructor(
-        from: Vertex = null,
-        to: Vertex = null,
-        public weight: number = null
+        from: Vertex,
+        to: Vertex,
+        public weight: number
     ) {
         this.from = from.vertice
         this.to = to.vertice

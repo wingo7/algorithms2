@@ -3,19 +3,19 @@ import {QueueItem} from "./types";
 export class PriorityQueue {
     queue: QueueItem[] = []
 
-    get size() {
+    getSize() {
         return this.queue.length
     }
 
-    get isEmpty() {
-        return this.size === 0
+    isEmpty() {
+        return this.getSize() === 0
     }
 
     enqueue(val: string, priority: number) {
         const element: QueueItem = {val, priority}
         if (
             this.isEmpty ||
-            element.priority >= this.queue[this.size - 1].priority
+            element.priority >= this.queue[this.getSize() - 1].priority
         ) {
             this.queue.push(element)
         } else {
