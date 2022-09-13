@@ -1,0 +1,24 @@
+SOLID PRINCIPLES:
+
+Single Responsibility Principle - https://github.com/nestjs/nest/blob/master/packages/microservices/server/server-kafka.ts ServerKafka class is responsible for creating and handling events only with kafka event store.
+
+Open/Closed Principle - https://github.com/microsoft/vscode/blob/main/src/vs/workbench/services/activity/browser/activityService.ts class ViewContainerActivityByView extends class Disposable,
+ so 48-50 method dispose is reimplemented. Our method is closed for modification but opened for modification.
+
+
+Interface Seggregation Principle - https://github.com/microsoft/vscode/blob/main/src/vs/platform/theme/common/styler.ts 53-57 interface IToggleStyleOverrides extends IStyleOverrides adding
+few new properties.
+
+
+ANTISOLID:
+
+Single Responsibility Principle - https://github.com/tradingview/lightweight-charts/blob/master/src/model/chart-model.ts ; class ChartModel looks too big and implements plenty of public methods, it can be splitted
+for several classes
+
+
+Open/Closed Principle https://github.com/microsoft/vscode/blob/main/src/vs/editor/common/languages/linkComputer.ts 213, method computeLinks looks to big with switch case and if statements, it would be better to extend this method
+to increase readability and complexion
+
+
+Interface Suggrigation Principle - https://github.com/tradingview/lightweight-charts/blob/master/src/gui/mouse-event-handler.ts 13, method MouseEventHandlers is too big, Despite to name, it works not only with mouse events, but also taps and clicks.
+ It can be split into two interfaces for example: MouseEventHandler and TouchGestureHandler
