@@ -3,18 +3,18 @@ import {QueueItem} from "./types";
 export class PriorityQueue {
     queue: QueueItem[] = []
 
-    getSize() {
+     getSize() {
         return this.queue.length
     }
 
-    isEmpty() {
+     isEmpty() {
         return this.getSize() === 0
     }
 
     enqueue(val: string, priority: number) {
         const element: QueueItem = {val, priority}
         if (
-            this.isEmpty ||
+            this.isEmpty() ||
             element.priority >= this.queue[this.getSize() - 1].priority
         ) {
             this.queue.push(element)
@@ -29,6 +29,6 @@ export class PriorityQueue {
     }
 
     dequeue() {
-        return this.isEmpty ? null : this.queue.shift().val
+        return this.isEmpty() ? null : this.queue.shift().val
     }
 }

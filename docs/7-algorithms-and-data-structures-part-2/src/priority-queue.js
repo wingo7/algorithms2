@@ -13,7 +13,7 @@ var PriorityQueue = /** @class */ (function () {
     };
     PriorityQueue.prototype.enqueue = function (val, priority) {
         var element = { val: val, priority: priority };
-        if (this.isEmpty ||
+        if (this.isEmpty() ||
             element.priority >= this.queue[this.getSize() - 1].priority) {
             this.queue.push(element);
         }
@@ -27,7 +27,7 @@ var PriorityQueue = /** @class */ (function () {
         }
     };
     PriorityQueue.prototype.dequeue = function () {
-        return this.isEmpty ? null : this.queue.shift().val;
+        return this.isEmpty() ? null : this.queue.shift().val;
     };
     return PriorityQueue;
 }());
